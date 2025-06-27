@@ -75,11 +75,11 @@ src/
 - `FornecedorDAO.java` - Acesso a dados de fornecedores
 - `VendaDAO.java` - Acesso a dados de vendas
 
-### 🧾 Service
+### Service
 
 - `RelatorioService.java` - Responsável pela geração dos relatórios em PDF utilizando iText
 
-## 🔧 Instalação e Configuração
+## Instalação e Configuração
 
 ### Requisitos
 
@@ -96,6 +96,6 @@ src/
    cd unipao
 
 
-## 👤 Autor
+## Autor
 Desenvolvido por André Luís Lopes
-🔗 [GitHub](https://github.com/AndreLuisLopes) • [Linkedin](https://www.linkedin.com/in/andre-luis-lopes/)
+[GitHub](https://github.com/AndreLuisLopes) • [Linkedin](https://www.linkedin.com/in/andre-luis-lopes/)
