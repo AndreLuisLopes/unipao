@@ -75,8 +75,50 @@ public class MainView extends JFrame {
         menuVendas.add(menuItemNovaVenda);
         menuVendas.add(menuItemConsultarVendas);
         
+        // NOVO: Menu Relatórios
+        JMenu menuRelatorios = new JMenu("Relatórios");
+        
+        JMenuItem menuItemRelatorios = new JMenuItem("Gerar Relatórios");
+        menuItemRelatorios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirTelaRelatorios();
+            }
+        });
+        
+        JMenuItem menuItemRelVendasMes = new JMenuItem("Vendas por Mês");
+        menuItemRelVendasMes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirTelaRelatorios();
+            }
+        });
+        
+        JMenuItem menuItemRelVendasCliente = new JMenuItem("Vendas por Cliente");
+        menuItemRelVendasCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirTelaRelatorios();
+            }
+        });
+        
+        JMenuItem menuItemRelEstoque = new JMenuItem("Gestão de Estoque");
+        menuItemRelEstoque.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirTelaRelatorios();
+            }
+        });
+        
+        menuRelatorios.add(menuItemRelatorios);
+        menuRelatorios.addSeparator();
+        menuRelatorios.add(menuItemRelVendasMes);
+        menuRelatorios.add(menuItemRelVendasCliente);
+        menuRelatorios.add(menuItemRelEstoque);
+        
         menuBar.add(menuCadastros);
         menuBar.add(menuVendas);
+        menuBar.add(menuRelatorios); // NOVO: Adicionado menu relatórios
         
         setJMenuBar(menuBar);
         
@@ -156,10 +198,33 @@ public class MainView extends JFrame {
                 abrirTelaFornecedores();
             }
         });
-               
+        
+        // NOVO: Botão Relatórios substituindo o botão Sair
+        JButton btnRelatorios = new JButton("Relatórios");
+        btnRelatorios.setFont(new Font("Arial", Font.BOLD, 16));
+        btnRelatorios.setPreferredSize(new Dimension(150, 80));
+        btnRelatorios.setBackground(new Color(240, 255, 255));
+        btnRelatorios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                abrirTelaRelatorios();
+            }
+        });
+        
+        buttonPanel.add(btnNovaVenda);
+        buttonPanel.add(btnProdutos);
+        buttonPanel.add(btnClientes);
+        buttonPanel.add(btnFuncionarios);
+        buttonPanel.add(btnFornecedores);
+        buttonPanel.add(btnRelatorios); // NOVO: Adicionado botão relatórios
+        
+        mainPanel.add(infoPanel, BorderLayout.NORTH);
+        mainPanel.add(buttonPanel, BorderLayout.CENTER);
+        
+        // NOVO: Painel inferior com botão Sair
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton btnSair = new JButton("Sair");
-        btnSair.setFont(new Font("Arial", Font.BOLD, 16));
-        btnSair.setPreferredSize(new Dimension(150, 80));
+        btnSair.setFont(new Font("Arial", Font.BOLD, 14));
         btnSair.setBackground(new Color(255, 200, 200));
         btnSair.addActionListener(new ActionListener() {
             @Override
@@ -174,16 +239,8 @@ public class MainView extends JFrame {
                 }
             }
         });
-        
-        buttonPanel.add(btnNovaVenda);
-        buttonPanel.add(btnProdutos);
-        buttonPanel.add(btnClientes);
-        buttonPanel.add(btnFuncionarios);
-        buttonPanel.add(btnFornecedores);
-        buttonPanel.add(btnSair);
-        
-        mainPanel.add(infoPanel, BorderLayout.NORTH);
-        mainPanel.add(buttonPanel, BorderLayout.CENTER);
+        bottomPanel.add(btnSair);
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
         
         add(mainPanel);
         
@@ -218,6 +275,12 @@ public class MainView extends JFrame {
     private void abrirTelaFornecedores() {
         FornecedorView fornecedorView = new FornecedorView();
         fornecedorView.setVisible(true);
+    }
+    
+    // NOVO: Método para abrir tela de relatórios
+    private void abrirTelaRelatorios() {
+        RelatorioView relatorioView = new RelatorioView();
+        relatorioView.setVisible(true);
     }
     
     public static void main(String[] args) {
